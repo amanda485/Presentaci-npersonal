@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amanda Fernandez — Portafolio de Diseño</title>
-</head>
-<body>
+<!--
+  IMPORTANTE (solo si publicas fuera de CodePen):
+  En CodePen, ve a Settings > HTML > "Stuff for <head>"
+  y pega ahí esta línea, para que el sitio se vea bien
+  en celulares reales:
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  CodePen ya la agrega automáticamente en su preview,
+  así que dentro del editor no es obligatorio, pero
+  conviene tenerla guardada para cuando exportes el sitio.
+-->
 
 
 <style>
@@ -148,13 +152,15 @@ body {
 .portfolio {
   position: absolute;
   left: 7%;
-  bottom: 22%;
+  bottom: 34%;
 
   font-size: 15px;
   letter-spacing: 3px;
   text-transform: uppercase;
 
   color: #3b0b20;
+
+  z-index: 2;
 }
 
 
@@ -166,8 +172,8 @@ body {
   font-size:
     clamp(
       90px,
-      14vw,
-      220px
+      13vw,
+      190px
     );
 
   font-weight: 300;
@@ -175,15 +181,20 @@ body {
   letter-spacing: -9px;
 
   color: #3b0b20;
+
+  z-index: 1;
 }
 
 
 .lastname {
   position: absolute;
   right: 3%;
-  top: 5%;
+  top: 3%;
+  bottom: 3%;
 
-  height: 72%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -191,14 +202,16 @@ body {
   font-size:
     clamp(
       50px,
-      7vw,
-      105px
+      min(7vw, 11vh),
+      100px
     );
 
   font-weight: 300;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
 
   color: #3b0b20;
+
+  white-space: nowrap;
 }
 
 
@@ -854,7 +867,7 @@ body {
 
   .lastname {
 
-    font-size: 9vw;
+    font-size: min(9vw, 11vh);
   }
 
 
@@ -950,7 +963,7 @@ body {
 
   .lastname {
 
-    font-size: 12vw;
+    font-size: min(12vw, 11vh);
 
     right: 5%;
 
@@ -1354,5 +1367,3 @@ folds.forEach(function(fold) {
 });
 
 </script>
-</body>
-</html>
