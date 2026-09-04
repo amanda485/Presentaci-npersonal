@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis UX — CCDM y YouTube</title>
+<style>
+  :root{
+    --paper:#EEEAE1;
+    --surface:#FAF8F3;
+    --ink:#20241F;
+    --ink-soft:#5B5B52;
+    --teal:#2E5E63;
+    --teal-soft:#DCE7E6;
+    --rust:#B24E28;
+    --rust-soft:#F1DDD1;
+    --line:#D8D2C4;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  .ux-analysis {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    padding: 4rem 1.5rem 5rem;
+    line-height: 1.55;
+  }
+
+  .ux-analysis__inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .ux-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2rem;
+  }
+
+  .ux-header__kicker {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--teal);
+    letter-spacing: 0.02em;
+    margin: 0 0 0.9rem;
+  }
+
+  .ux-header h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 1rem;
+    max-width: 18ch;
+  }
+
+  .ux-header p {
+    color: var(--ink-soft);
+    max-width: 58ch;
+    font-size: 1.02rem;
+    margin: 0;
+  }
+
+  /* --- site block --- */
+  .site {
+    margin-bottom: 4rem;
+  }
+  .site:last-child { margin-bottom: 0; }
+
+  .site__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .site__type {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--surface);
+    background: var(--ink);
+    padding: 0.22rem 0.55rem;
+    border-radius: 3px;
+  }
+
+  .site__name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .site__url {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    word-break: break-all;
+  }
+
+  /* --- wireframe diagram --- */
+  .wireframe {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .wireframe__viewport-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.7rem;
+  }
+
+  .wireframe__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .wf-block {
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.5rem 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .wf-block--fixed { background: var(--teal-soft); border-color: #C4D6D4; }
+  .wf-block--dynamic {
+    background: repeating-linear-gradient(
+      135deg, var(--rust-soft), var(--rust-soft) 8px, #F7EAE2 8px, #F7EAE2 16px
+    );
+    border-color: #E3C2AC;
+  }
+
+  .wf-block__label { font-weight: 600; }
+  .wf-block__tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .wf-legend {
+    display: flex;
+    gap: 1.4rem;
+    margin-top: 0.8rem;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    font-family: var(--mono);
+  }
+  .wf-legend span { display: flex; align-items: center; gap: 0.4rem; }
+  .wf-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .wf-legend .dot--fixed { background: var(--teal-soft); border: 1px solid #C4D6D4; }
+  .wf-legend .dot--dynamic { background: var(--rust-soft); border: 1px solid #E3C2AC; }
+
+  /* --- Q&A grid --- */
+  .qa {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .qa__item {
+    border-left: 3px solid var(--teal);
+    padding: 0.15rem 0 0.15rem 1.1rem;
+  }
+  .qa__item[data-cat="responsive"] { border-left-color: var(--rust); }
+  .qa__item[data-cat="valoracion"] { border-left-color: var(--ink); }
+
+  .qa__cat {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: none;
+    color: var(--ink-soft);
+    margin: 0 0 0.3rem;
+  }
+
+  .qa__q {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .qa__a {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 68ch;
+  }
+
+  .site__divider {
+    border: none;
+    border-top: 1px dashed var(--line);
+    margin: 3.5rem 0 0;
+  }
+
+  @media (max-width: 560px) {
+    .ux-analysis { padding: 2.8rem 1.1rem 3.5rem; }
+    .wf-block { font-size: 0.76rem; }
+    .wf-block__tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="ux-analysis">
+  <div class="ux-analysis__inner">
+
+    <header class="ux-header">
+      <p class="ux-header__kicker">análisis comparativo · scroll y layout</p>
+      <h1>Cómo se comportan dos interfaces al hacer scroll</h1>
+      <p>Inspección de un sitio web de salud (CCDM) y una plataforma de video (YouTube), usando las herramientas de desarrollador del navegador para observar qué elementos quedan fijos, cómo se distribuyen las columnas y qué cambia en la versión móvil.</p>
+    </header>
+
+    <!-- ============ SITIO 1: CCDM ============ -->
+    <article class="site">
+      <div class="site__head">
+        <span class="site__type">Sitio web</span>
+        <h2 class="site__name">CCDM — Centro médico</h2>
+      </div>
+      <p class="site__url">ccdm.cl</p>
+
+      <div class="wireframe">
+        <p class="wireframe__viewport-label">estructura — versión escritorio</p>
+        <div class="wireframe__stack">
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Header · logo, tabla de contenidos, iniciar sesión</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--dynamic">
+            <span class="wf-block__label">Carrusel de imágenes introductorias</span>
+            <span class="wf-block__tag">cambia c/5s</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Barra de reserva · exámenes / consultas, médico o especialidad</span>
+            <span class="wf-block__tag">interactivo</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Servicios en línea · 7 accesos con pictograma</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Información de la clínica · 4 botones</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Convenios</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Novedades / noticias</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Footer · contacto y ubicaciones</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+        </div>
+        <div class="wf-legend">
+          <span><i class="dot--fixed"></i>Bloque estático</span>
+          <span><i class="dot--dynamic"></i>Contenido dinámico</span>
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="qa__item" data-cat="scroll">
+          <p class="qa__cat">movimiento en scroll</p>
+          <h3 class="qa__q">¿Qué partes se mueven y cuáles quedan fijas?</h3>
+          <p class="qa__a">Bajo el header hay un carrusel que cambia cada 5 segundos, alternando presentación del centro médico, atención al paciente, la app para descargar, horarios, y accesos a agendar, rescate e imagenología. El resto de la plataforma permanece fijo, aunque interactivo, priorizando siempre la opción de agendar hora médica.</p>
+        </div>
+        <div class="qa__item" data-cat="estructura">
+          <p class="qa__cat">distribución de columnas</p>
+          <h3 class="qa__q">¿Cómo se distribuyen las columnas?</h3>
+          <p class="qa__a">La página se organiza en horizontes apilados: header, carrusel, barra de reserva (con selección de médico desplegada verticalmente), un bloque de 7 servicios en cuadrícula, 4 botones informativos sobre la clínica, convenios, novedades y finalmente el footer con contacto y ubicaciones.</p>
+        </div>
+        <div class="qa__item" data-cat="responsive">
+          <p class="qa__cat">comportamiento responsive</p>
+          <h3 class="qa__q">¿Qué cambia en la versión móvil?</h3>
+          <p class="qa__a">El header reduce el logo (sin texto) y deja un único botón para reservar hora más un menú desplegable. El carrusel desaparece. Los servicios se muestran solo como texto, sin sus botones de acceso directo. El resto conserva el orden, pero en una columna más angosta.</p>
+        </div>
+        <div class="qa__item" data-cat="valoracion">
+          <p class="qa__cat">valoración</p>
+          <h3 class="qa__q">¿Son apropiadas estas decisiones?</h3>
+          <p class="qa__a">Sí: la distribución funciona bien, sobre todo porque la barra de reserva de horas aparece de inmediato, que es la razón principal por la que la mayoría de los usuarios entra al sitio.</p>
+        </div>
+      </div>
+    </article>
+
+    <hr class="site__divider">
+
+    <!-- ============ SITIO 2: YOUTUBE ============ -->
+    <article class="site" style="margin-top:3.5rem;">
+      <div class="site__head">
+        <span class="site__type">Plataforma web</span>
+        <h2 class="site__name">YouTube</h2>
+      </div>
+      <p class="site__url">youtube.com</p>
+
+      <div class="wireframe">
+        <p class="wireframe__viewport-label">estructura — versión escritorio</p>
+        <div class="wireframe__stack">
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Header · logo, buscador, crear contenido, cuenta</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Chips de temáticas sugeridas</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Menú lateral izquierdo · secciones</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--dynamic">
+            <span class="wf-block__label">Grilla de videos (3 por fila) + shorts y anuncios</span>
+            <span class="wf-block__tag">preview al pasar el mouse</span>
+          </div>
+        </div>
+        <div class="wf-legend">
+          <span><i class="dot--fixed"></i>Bloque estático</span>
+          <span><i class="dot--dynamic"></i>Contenido dinámico</span>
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="qa__item" data-cat="scroll">
+          <p class="qa__cat">movimiento en scroll</p>
+          <h3 class="qa__q">¿Qué partes se mueven y cuáles quedan fijas?</h3>
+          <p class="qa__a">Nada se desplaza con el scroll salvo que el mouse pase sobre un video: ahí comienza a reproducirse una vista previa sin necesidad de entrar a él. El resto de la interfaz permanece fijo.</p>
+        </div>
+        <div class="qa__item" data-cat="estructura">
+          <p class="qa__cat">distribución de columnas</p>
+          <h3 class="qa__q">¿Cómo se distribuyen las columnas?</h3>
+          <p class="qa__a">El header agrupa logo y buscador a la izquierda, y botones de crear contenido / cuenta a la derecha; justo debajo aparecen chips de temas sugeridos. El menú lateral izquierdo despliega las secciones de navegación. El cuerpo muestra videos en rectángulos horizontales, 3 por fila, en scroll infinito, con shorts (verticales, 5 por pantalla) y anuncios intercalados.</p>
+        </div>
+        <div class="qa__item" data-cat="responsive">
+          <p class="qa__cat">comportamiento responsive</p>
+          <h3 class="qa__q">¿Qué cambia en la versión móvil?</h3>
+          <p class="qa__a">La estructura se mantiene, pero el menú lateral pasa a una barra inferior fija durante el scroll vertical. Los videos dejan de mostrarse en grilla de 3 columnas y pasan a 1 por fila.</p>
+        </div>
+        <div class="qa__item" data-cat="valoracion">
+          <p class="qa__cat">valoración</p>
+          <h3 class="qa__q">¿Son apropiadas estas decisiones?</h3>
+          <p class="qa__a">Sí, aunque se podría sumar un horizonte introductorio con segmentos cortos de los videos sugeridos, para que el usuario escuche un fragmento de interés antes de decidir entrar.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</body>
+</html>
