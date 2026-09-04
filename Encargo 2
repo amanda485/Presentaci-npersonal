@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botánica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__img">
+      <img src="assets/img/hero-bosque.jpg" alt="Copas de árboles vistas desde abajo, luz filtrándose entre las hojas">
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__label">
+      <h1 class="hero__label-title">botánica</h1>
+    </div>
+
+    <nav class="hero__nav">
+      <a href="#carrusel">Colección</a>
+      <a href="#especies">Especies</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="hero__scroll" href="#carrusel" aria-label="Bajar a la colección">
+      <span></span>
+    </a>
+  </header>
+
+  <div class="divider divider--down" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 Q30,0 60,20 T120,20 T180,20 T240,20 T300,20 T360,20 T420,20 T480,20 T540,20 T600,20 T660,20 T720,20 T780,20 T840,20 T900,20 T960,20 T1020,20 T1080,20 T1140,20 T1200,20 L1200,40 L0,40 Z"/></svg>
+  </div>
+
+  <!-- ===================== CARRUSEL ===================== -->
+  <section class="carrusel-section" id="carrusel">
+    <p class="section-kicker">La colección</p>
+    <h2 class="section-title">En movimiento constante</h2>
+
+    <div class="carrusel" id="carrusel-track">
+      <div class="carrusel__track">
+        <!-- Tarjetas del carrusel: reemplaza el src de cada img por tus fotos reales en assets/img/carousel/ -->
+        <figure class="carrusel__card"><img src="assets/img/carousel/img-01.jpg" alt="Imagen botánica 1"><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card"><img src="assets/img/carousel/img-02.jpg" alt="Imagen botánica 2"><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card"><img src="assets/img/carousel/img-03.jpg" alt="Imagen botánica 3"><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card"><img src="assets/img/carousel/img-04.jpg" alt="Imagen botánica 4"><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card"><img src="assets/img/carousel/img-05.jpg" alt="Imagen botánica 5"><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card"><img src="assets/img/carousel/img-06.jpg" alt="Imagen botánica 6"><figcaption>Nombre de la especie</figcaption></figure>
+        <!-- Duplicado para el loop infinito. Si agregas/quitas tarjetas arriba, replica el cambio aquí abajo -->
+        <figure class="carrusel__card" aria-hidden="true"><img src="assets/img/carousel/img-01.jpg" alt=""><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card" aria-hidden="true"><img src="assets/img/carousel/img-02.jpg" alt=""><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card" aria-hidden="true"><img src="assets/img/carousel/img-03.jpg" alt=""><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card" aria-hidden="true"><img src="assets/img/carousel/img-04.jpg" alt=""><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card" aria-hidden="true"><img src="assets/img/carousel/img-05.jpg" alt=""><figcaption>Nombre de la especie</figcaption></figure>
+        <figure class="carrusel__card" aria-hidden="true"><img src="assets/img/carousel/img-06.jpg" alt=""><figcaption>Nombre de la especie</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider--up" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 Q30,40 60,20 T120,20 T180,20 T240,20 T300,20 T360,20 T420,20 T480,20 T540,20 T600,20 T660,20 T720,20 T780,20 T840,20 T900,20 T960,20 T1020,20 T1080,20 T1140,20 T1200,20 L1200,0 L0,0 Z"/></svg>
+  </div>
+
+  <!-- ===================== ESPECIES / BOTONES ===================== -->
+  <section class="especies" id="especies">
+    <p class="section-kicker">Explora</p>
+    <h2 class="section-title">Cada especie, su silueta</h2>
+    <p class="section-desc">Toca una silueta para ver su ficha. Agrega tantas como necesites siguiendo el mismo formato en el HTML.</p>
+
+    <div class="especies__grid">
+
+      <button class="especie-btn" data-especie="rama-follaje">
+        <span class="especie-btn__silueta">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 130 L38 34" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 20 C 46 40, 34 48, 20 56" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M46 30 C 40 46, 30 52, 18 60" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M44 42 C 36 54, 26 58, 14 64" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M40 56 C 34 66, 24 70, 12 74" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <span class="especie-btn__nombre">Follaje</span>
+      </button>
+
+      <button class="especie-btn" data-especie="planta-raiz">
+        <span class="especie-btn__silueta">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 30 L60 90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M60 30 C 56 14, 62 8, 66 4" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <circle cx="66" cy="4" r="3" fill="currentColor"/>
+            <path d="M60 50 C 46 58, 40 74, 34 96" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M60 58 C 68 68, 70 84, 68 100" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M60 44 C 50 50, 46 62, 42 78" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M60 90 C 50 98, 46 108, 44 122" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M60 90 C 66 100, 68 110, 70 124" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M60 90 L 60 128" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="especie-btn__nombre">Raíz</span>
+      </button>
+
+      <button class="especie-btn" data-especie="flor-amapola">
+        <span class="especie-btn__silueta">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M56 132 L70 60" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M56 132 L48 128" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M56 132 L64 130" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M70 60 C 58 54, 54 42, 62 30 C 68 20, 82 20, 88 30 C 94 40, 88 50, 78 54 C 88 50, 98 54, 100 44 C 102 32, 92 22, 80 24 C 88 16, 84 6, 74 8 C 66 10, 64 20, 68 28 C 60 22, 50 26, 50 36 C 50 46, 60 52, 70 60 Z" fill="currentColor" opacity="0.9"/>
+          </svg>
+        </span>
+        <span class="especie-btn__nombre">Amapola</span>
+      </button>
+
+      <!--
+        Para agregar una especie nueva, copia un bloque <button class="especie-btn">...</button>
+        completo, cambia el atributo data-especie, el SVG de la silueta y el texto del nombre.
+      -->
+
+    </div>
+  </section>
+
+  <footer class="footer" id="contacto">
+    <div class="divider divider--down footer__divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 Q30,0 60,20 T120,20 T180,20 T240,20 T300,20 T360,20 T420,20 T480,20 T540,20 T600,20 T660,20 T720,20 T780,20 T840,20 T900,20 T960,20 T1020,20 T1080,20 T1140,20 T1200,20 L1200,40 L0,40 Z"/></svg>
+    </div>
+    <p class="footer__title">botánica</p>
+    <p class="footer__text">Escríbenos para conocer disponibilidad y precios.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
