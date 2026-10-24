@@ -1,0 +1,271 @@
+/* =========================================================
+   VARIABLES (mismas del portafolio)
+========================================================= */
+
+:root {
+  --ink: #4D0E24;
+  --paper: #F4EEE1;
+  --tan-1: #C9A897;
+  --tan-2: #B98E7A;
+  --tan-3: #D8BBA6;
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Work Sans", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.page-frame {
+  border: 1px solid var(--ink);
+  margin: 10px auto;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 28px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-header span {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.site-header p {
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TÍTULO DEL CURSO
+========================================================= */
+
+.course-title {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(46px, 10vw, 108px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  padding: 22px 28px 0;
+}
+
+.course-intro {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 44ch;
+  padding: 22px 28px 0;
+}
+
+
+/* =========================================================
+   RECUADROS DE LOS ENCARGOS
+========================================================= */
+
+.assignment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px 18px;
+  padding: 40px 28px 44px;
+}
+
+.assignment {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.assignment-box {
+  width: 100%;
+  height: 230px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  padding: 14px 18px;
+  transition: opacity .3s ease;
+}
+
+.assignment-box b {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.assignment:nth-child(1) .assignment-box { background: var(--ink); color: var(--paper); clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%); }
+.assignment:nth-child(2) .assignment-box { background: var(--tan-2); clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%); }
+.assignment:nth-child(3) .assignment-box { background: var(--ink); color: var(--paper); clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 100%); }
+.assignment:nth-child(4) .assignment-box { background: var(--tan-3); clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%); }
+
+.assignment-box--image {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.assignment:hover .assignment-box {
+  opacity: .85;
+}
+
+.assignment-title {
+  display: block;
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.assignment:hover .assignment-title {
+  text-decoration: underline;
+}
+
+.assignment-desc {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+
+.back-link {
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color .3s ease;
+}
+
+.back-link:hover {
+  border-bottom-color: var(--ink);
+}
+
+.assignment-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 22px;
+}
+
+.assignment-grid--two .assignment-box {
+  height: 260px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px 22px;
+  border-top: 1px solid var(--ink);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer p {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.stamp {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   TABLET Y MÓVIL
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .assignment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .site-header,
+  .course-title,
+  .course-intro,
+  .site-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .assignment-grid {
+    padding: 28px 18px 34px;
+    gap: 24px 14px;
+  }
+
+  .assignment-box {
+    height: 150px;
+    padding: 10px 12px;
+  }
+
+  .assignment-box b {
+    font-size: 44px;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .assignment-grid,
+  .assignment-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .assignment-box {
+    height: 170px;
+  }
+
+}
