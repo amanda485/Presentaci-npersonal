@@ -1,0 +1,522 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+  --ink: #4D0E24;
+  --paper: #F4EEE1;
+  --tan-1: #C9A897;
+  --tan-2: #B98E7A;
+  --tan-3: #D8BBA6;
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Work Sans", Arial, sans-serif;
+}
+
+.page-frame {
+  border: 1px solid var(--ink);
+  margin: 10px auto;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================================
+   HEADER / NAVEGACIÓN
+========================================================= */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 28px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+.logo.is-hidden {
+  visibility: hidden;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color .3s ease;
+}
+
+.site-nav a:hover {
+  border-bottom-color: rgba(77,14,36,.4);
+}
+
+.site-nav a.current {
+  border-bottom-color: var(--ink);
+}
+
+
+/* =========================================================
+   TÍTULO GIGANTE DE CADA PÁGINA
+========================================================= */
+
+.page-title {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  color: var(--ink);
+  font-size: clamp(54px, 11vw, 108px);
+  line-height: 0.85;
+  letter-spacing: -2px;
+  margin: 22px 0 0;
+  padding: 0 28px;
+}
+
+
+/* =========================================================
+   BLOQUES DE FOTO CON CORTE DIAGONAL
+========================================================= */
+
+.photo-cut {
+  background-color: var(--tan-1);
+  background-size: cover;
+  background-position: center;
+  flex: 0 0 auto;
+}
+
+.cut-a { clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%); }
+.cut-b { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%); }
+.cut-c { clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 100%); }
+.cut-d { clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%); }
+
+
+/* =========================================================
+   PORTADA — INICIO
+========================================================= */
+
+.hero-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 24px 28px 0;
+  height: 250px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.hero-name {
+  flex: 0 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-name h1 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  color: var(--ink);
+  font-size: clamp(44px, 8vw, 66px);
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+.hero-row .photo-cut {
+  width: 180px;
+  height: 92%;
+  margin-left: 16px;
+}
+
+.hero-row .photo-cut:not(:first-of-type) {
+  margin-left: 4px;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px 28px 22px;
+  border-top: 1px solid var(--ink);
+  margin-top: 64px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer p {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.6;
+  max-width: 360px;
+}
+
+.stamp {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   SOBRE MÍ
+========================================================= */
+
+.about-content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 36px 28px 40px;
+}
+
+.about-content .photo-cut {
+  width: 280px;
+  height: 320px;
+}
+
+.about-text {
+  flex: 1;
+  padding-top: 6px;
+  min-width: 260px;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 44ch;
+  margin-bottom: 16px;
+}
+
+.tag-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag-list span {
+  border: 1.5px solid var(--ink);
+  padding: 7px 16px;
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PROYECTOS
+========================================================= */
+
+.project-list {
+  padding: 36px 28px 0;
+}
+
+.project-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+  align-items: center;
+  padding-bottom: 46px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-row:hover .photo-cut {
+  opacity: .85;
+}
+
+.project-row:hover h2 {
+  text-decoration: underline;
+}
+
+.project-row:last-child {
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.project-row.reverse {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.project-row .photo-cut {
+  width: 340px;
+  height: 230px;
+  flex: 0 0 auto;
+}
+
+.project-info {
+  flex: 0 1 380px;
+  max-width: 380px;
+  min-width: 240px;
+}
+
+.project-number {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.project-info h2 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(20px, 2.6vw, 24px);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.project-info p {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 38ch;
+  margin-bottom: 14px;
+}
+
+.project-row.reverse .project-info p {
+  margin-left: auto;
+}
+
+.project-link {
+  display: inline-block;
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ink);
+}
+
+
+/* =========================================================
+   TALLERES
+========================================================= */
+
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 20px;
+  padding: 36px 28px 40px;
+}
+
+.workshop-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.workshop-item .photo-cut {
+  width: 100%;
+  height: 160px;
+  margin-bottom: 12px;
+}
+
+.workshop-item:hover .photo-cut {
+  opacity: .85;
+}
+
+.workshop-title {
+  display: block;
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.workshop-item:hover .workshop-title {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   CONTACTO
+========================================================= */
+
+.contact-content {
+  padding: 50px 28px 64px;
+}
+
+.contact-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 36ch;
+  margin-bottom: 22px;
+}
+
+.contact-email {
+  display: inline-block;
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 5.5vw, 52px);
+  text-decoration: none;
+  border-bottom: 2.5px solid var(--ink);
+  letter-spacing: -1px;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .project-row .photo-cut {
+    width: 300px;
+    height: 220px;
+  }
+
+  .workshop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .site-header {
+    padding: 16px 18px 0;
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  .site-nav a {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .page-title {
+    padding: 0 18px;
+    font-size: clamp(42px, 15vw, 64px);
+  }
+
+  .hero-row {
+    padding: 18px 18px 0;
+    height: 190px;
+  }
+
+  .hero-name h1 {
+    font-size: clamp(32px, 11vw, 44px);
+  }
+
+  .hero-row .photo-cut {
+    width: 120px;
+  }
+
+  .site-footer {
+    padding: 16px 18px 18px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    padding: 26px 18px 34px;
+    gap: 22px;
+  }
+
+  .about-content .photo-cut {
+    width: 100%;
+    height: 220px;
+  }
+
+  .project-list {
+    padding: 26px 18px 0;
+  }
+
+  .project-row,
+  .project-row.reverse {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 18px;
+  }
+
+  .project-row.reverse .project-info p {
+    margin-left: 0;
+  }
+
+  .project-row .photo-cut {
+    width: 100%;
+    height: 220px;
+  }
+
+  .workshop-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 26px 18px 34px;
+    gap: 20px 14px;
+  }
+
+  .workshop-item .photo-cut {
+    height: 130px;
+  }
+
+  .contact-content {
+    padding: 36px 18px 44px;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .workshop-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}

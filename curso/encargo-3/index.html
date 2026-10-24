@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis UX — CCDM y YouTube</title>
+<link rel="stylesheet" href="analisis-ux.css">
+</head>
+<body>
+
+<section class="ux-analysis">
+  <div class="ux-analysis__inner">
+
+    <header class="ux-header">
+      <p class="ux-header__kicker">análisis comparativo · scroll y layout</p>
+      <h1>Cómo se comportan dos interfaces al hacer scroll</h1>
+      <p>Inspección de un sitio web de salud (CCDM) y una plataforma de video (YouTube), usando las herramientas de desarrollador del navegador para observar qué elementos quedan fijos, cómo se distribuyen las columnas y qué cambia en la versión móvil.</p>
+    </header>
+
+    <!-- ============ SITIO 1: CCDM ============ -->
+    <article class="site">
+      <div class="site__head">
+        <span class="site__type">Sitio web</span>
+        <h2 class="site__name">CCDM — Centro médico</h2>
+      </div>
+      <p class="site__url">ccdm.cl</p>
+
+      <div class="wireframe">
+        <p class="wireframe__viewport-label">estructura — versión escritorio</p>
+        <div class="wireframe__stack">
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Header · logo, tabla de contenidos, iniciar sesión</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--dynamic">
+            <span class="wf-block__label">Carrusel de imágenes introductorias</span>
+            <span class="wf-block__tag">cambia c/5s</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Barra de reserva · exámenes / consultas, médico o especialidad</span>
+            <span class="wf-block__tag">interactivo</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Servicios en línea · 7 accesos con pictograma</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Información de la clínica · 4 botones</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Convenios</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Novedades / noticias</span>
+            <span class="wf-block__tag">estático</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Footer · contacto y ubicaciones</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+        </div>
+        <div class="wf-legend">
+          <span><i class="dot--fixed"></i>Bloque estático</span>
+          <span><i class="dot--dynamic"></i>Contenido dinámico</span>
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="qa__item" data-cat="scroll">
+          <p class="qa__cat">movimiento en scroll</p>
+          <h3 class="qa__q">¿Qué partes se mueven y cuáles quedan fijas?</h3>
+          <p class="qa__a">Bajo el header hay un carrusel que cambia cada 5 segundos, alternando presentación del centro médico, atención al paciente, la app para descargar, horarios, y accesos a agendar, rescate e imagenología. El resto de la plataforma permanece fijo, aunque interactivo, priorizando siempre la opción de agendar hora médica.</p>
+        </div>
+        <div class="qa__item" data-cat="estructura">
+          <p class="qa__cat">distribución de columnas</p>
+          <h3 class="qa__q">¿Cómo se distribuyen las columnas?</h3>
+          <p class="qa__a">La página se organiza en horizontes apilados: header, carrusel, barra de reserva (con selección de médico desplegada verticalmente), un bloque de 7 servicios en cuadrícula, 4 botones informativos sobre la clínica, convenios, novedades y finalmente el footer con contacto y ubicaciones.</p>
+        </div>
+        <div class="qa__item" data-cat="responsive">
+          <p class="qa__cat">comportamiento responsive</p>
+          <h3 class="qa__q">¿Qué cambia en la versión móvil?</h3>
+          <p class="qa__a">El header reduce el logo (sin texto) y deja un único botón para reservar hora más un menú desplegable. El carrusel desaparece. Los servicios se muestran solo como texto, sin sus botones de acceso directo. El resto conserva el orden, pero en una columna más angosta.</p>
+        </div>
+        <div class="qa__item" data-cat="valoracion">
+          <p class="qa__cat">valoración</p>
+          <h3 class="qa__q">¿Son apropiadas estas decisiones?</h3>
+          <p class="qa__a">Sí: la distribución funciona bien, sobre todo porque la barra de reserva de horas aparece de inmediato, que es la razón principal por la que la mayoría de los usuarios entra al sitio.</p>
+        </div>
+      </div>
+    </article>
+
+    <hr class="site__divider">
+
+    <!-- ============ SITIO 2: YOUTUBE ============ -->
+    <article class="site" style="margin-top:3.5rem;">
+      <div class="site__head">
+        <span class="site__type">Plataforma web</span>
+        <h2 class="site__name">YouTube</h2>
+      </div>
+      <p class="site__url">youtube.com</p>
+
+      <div class="wireframe">
+        <p class="wireframe__viewport-label">estructura — versión escritorio</p>
+        <div class="wireframe__stack">
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Header · logo, buscador, crear contenido, cuenta</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Chips de temáticas sugeridas</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--fixed">
+            <span class="wf-block__label">Menú lateral izquierdo · secciones</span>
+            <span class="wf-block__tag">fijo</span>
+          </div>
+          <div class="wf-block wf-block--dynamic">
+            <span class="wf-block__label">Grilla de videos (3 por fila) + shorts y anuncios</span>
+            <span class="wf-block__tag">preview al pasar el mouse</span>
+          </div>
+        </div>
+        <div class="wf-legend">
+          <span><i class="dot--fixed"></i>Bloque estático</span>
+          <span><i class="dot--dynamic"></i>Contenido dinámico</span>
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="qa__item" data-cat="scroll">
+          <p class="qa__cat">movimiento en scroll</p>
+          <h3 class="qa__q">¿Qué partes se mueven y cuáles quedan fijas?</h3>
+          <p class="qa__a">Nada se desplaza con el scroll salvo que el mouse pase sobre un video: ahí comienza a reproducirse una vista previa sin necesidad de entrar a él. El resto de la interfaz permanece fijo.</p>
+        </div>
+        <div class="qa__item" data-cat="estructura">
+          <p class="qa__cat">distribución de columnas</p>
+          <h3 class="qa__q">¿Cómo se distribuyen las columnas?</h3>
+          <p class="qa__a">El header agrupa logo y buscador a la izquierda, y botones de crear contenido / cuenta a la derecha; justo debajo aparecen chips de temas sugeridos. El menú lateral izquierdo despliega las secciones de navegación. El cuerpo muestra videos en rectángulos horizontales, 3 por fila, en scroll infinito, con shorts (verticales, 5 por pantalla) y anuncios intercalados.</p>
+        </div>
+        <div class="qa__item" data-cat="responsive">
+          <p class="qa__cat">comportamiento responsive</p>
+          <h3 class="qa__q">¿Qué cambia en la versión móvil?</h3>
+          <p class="qa__a">La estructura se mantiene, pero el menú lateral pasa a una barra inferior fija durante el scroll vertical. Los videos dejan de mostrarse en grilla de 3 columnas y pasan a 1 por fila.</p>
+        </div>
+        <div class="qa__item" data-cat="valoracion">
+          <p class="qa__cat">valoración</p>
+          <h3 class="qa__q">¿Son apropiadas estas decisiones?</h3>
+          <p class="qa__a">Sí, aunque se podría sumar un horizonte introductorio con segmentos cortos de los videos sugeridos, para que el usuario escuche un fragmento de interés antes de decidir entrar.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</body>
+</html>
